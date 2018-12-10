@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="reset/css" href="assets/css/reset.css"/>
     <link href="https://fonts.googleapis.com/css?family=IM+Fell+English:400i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/gifplayer/src/gifplayer.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
@@ -29,8 +30,17 @@
         </form>
     
         <!-- Toons will get dumped Here -->
-        <div id="toons-view"></div>
-
+        <div class="row">
+            <div class="col-4">
+                <div id="toons-view-one"></div>
+            </div>
+            <div class="col-4">
+                <div id="toons-view-two"></div>
+            </div>
+            <div class="col-4">
+                <div id="toons-view-three"></div>
+            </div>
+        </div>
 
 
 
@@ -44,6 +54,7 @@
         </footer>
         
         <script src="assets/javascript/app.js"></script>
+        <script type="text/javascript" src="assets/css/gifplayer/src/gifplayer.js"></script>
     </div>
 </body>
 </html>

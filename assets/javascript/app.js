@@ -3,7 +3,8 @@ $(document).ready(function() {
     // ============================================================================
 
     // Initial array of cartoons
-    var cartoons = ["ThunderCats", "He-Man", "G.I. Joe", "She-Ra", "DuckTales", "Inspector Gadget"];
+    let cartoons = [`ThunderCats`, `He-Man`, `Transformers`, `She-Ra`, `DuckTales`, `Inspector Gadget`];
+     
 
 
     // FUNCTIONS
@@ -11,37 +12,43 @@ $(document).ready(function() {
 
     // displayToonGif function re-renders the HTML to display the appropriate content
     function displayToonGif() {
+        $(`#toons-view-one`).empty();
+        $(`#toons-view-two`).empty();
+        $(`#toons-view-three`).empty();
 
-        let toon = $(this)
-                .attr("data-name")
-                .replace(' ', '+');
-        let queryURL = `https://api.giphy.com/v1/gifs/search?q=${toon}&api_key=TqXsiW057A6TfMyJpYRpF4IynG9rHxk5&limit=10`;
+        let toon = $(this).attr(`data-name`)
+        let queryURL = `https://api.giphy.com/v1/gifs/search?q=${toon}+cartoon&api_key=TqXsiW057A6TfMyJpYRpF4IynG9rHxk5&limit=10&rating=g&rating=pg&rating=pg-13`;
 
         // Creates AJAX call for the specific toon button being clicked
         $.ajax({
             url: queryURL,
-            method: "GET"
+            method: `GET`
         }).then(function(response) {
             console.log(response);
+            console.log(response.data);
+            
 
-            // Creates a div to hold the toon
-            //$(`#toons-view`).append(`Title: ${response.Title}<br>`);
-            // Retrieves the Rating Data
-            // Creates an element to have the rating displayed
-            // Displays the rating
-            //$(`#toons-view`).append(`Rating: ${response.Rated}<br>`);
-            // Retrieves the release year
-            // Creates an element to hold the release year
-            // Displays the release year
-            //$(`#toons-view`).append(`Release Year: ${response.Released}<br>`);
-            // Retrieves the plot
-            // Creates an element to hold the plot
-            // Appends the plot
-            //$(`#toons-view`).append(`Plot: ${response.Plot}<br>`);
-            // Creates an element to hold the image
-            // Appends the image
-            //$(`#toons-view`).append(`<img src=${response.Poster}><br>`);
-            // Puts the entire toon above the previous toons.
+            for(let i = 0; i < 4; i++) {
+
+                
+                $(`#toons-view-one`).append(`<img src=${response.data[i].images.fixed_width.url}><br>`);
+                $(`#toons-view-one`).append(`Rating: ${response.data[i].rating}<br>`);
+
+            } 
+            for(let k = 4; k < 7; k++) {
+
+                
+                $(`#toons-view-two`).append(`<img src=${response.data[k].images.fixed_width.url}><br>`);
+                $(`#toons-view-two`).append(`Rating: ${response.data[k].rating}<br>`);
+
+            }
+            for(let l = 7; l < 10; l++) {
+
+                
+                $(`#toons-view-three`).append(`<img src=${response.data[l].images.fixed_width.url}><br>`);
+                $(`#toons-view-three`).append(`Rating: ${response.data[l].rating}<br>`);
+
+            }
         });
 
     }
@@ -50,13 +57,16 @@ $(document).ready(function() {
     function renderButtons() {
 
         // Delete the content inside the toons-view div prior to adding new toons
-        $(`#toons-view`).empty();
+        $(`#buttons-view`).empty();
 
         //Loop through the array of toons, then generate buttons for each toon in the array
-        for(let i = 0; i < cartoons.length; i++) {
-        $(`#toons-view`)
-                .append(`<button>${cartoons[i]}</button>`)
-                .addClass("band");
+        for(let j = 0; j < cartoons.length; j++) {
+            let b = $(`<button>`); 
+            b.addClass(`toon`);
+            b.css(`float`, `left`);
+            b.attr(`data-name`, cartoons[j]);
+            b.text(cartoons[j]);
+            $(`#buttons-view`).append(b);
         }
 
     }
@@ -65,7 +75,7 @@ $(document).ready(function() {
       $("#add-toon").on("click", function(event) {
         event.preventDefault();
         // This line of code will grab the input from the textbox
-        let toon = $("#toon-input").val().trim();
+        let toon = $(`#toon-input`).val().trim();
 
         // The toon from the textbox is then added to our array
         cartoons.push(toon);
@@ -75,7 +85,7 @@ $(document).ready(function() {
       });
 
       // Adding click event listeners to all elements with a class of "toon"
-      $(document).on("click", ".toon", displayToonGif);
+      $(document).on(`click`, `.toon`, displayToonGif);
 
       // Calling the renderButtons function to display the initial list of cartoons
       renderButtons();

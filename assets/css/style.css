@@ -1,4 +1,5 @@
 .background-image {
     background-image: url('../images/80s-floor.png');
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
    }
+
