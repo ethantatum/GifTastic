@@ -28,15 +28,14 @@ $(document).ready(function() {
 
             for(let i = 0; i < response.data.length; i++) {
 
-                
-                $(`#toons-view`).append(`<img src=${response.data[i].images.fixed_width.url}><br>`);
-                $(`#toons-view`).append(`Rating: ${response.data[i].rating}<br>`);
-
+                let imageBox = $(`<div>`)
+                imageBox.append(`<img src=${response.data[i].images.fixed_width.url}><br>`);
+                imageBox.append(`Rating: ${response.data[i].rating}<br>`).css(`text-align`, `center`);
+                $(`#toons-view`).append(imageBox);
             } 
         });
 
     }
-
     // Function for displaying toon data
     function renderButtons() {
 
