@@ -12,9 +12,7 @@ $(document).ready(function() {
 
     // displayToonGif function re-renders the HTML to display the appropriate content
     function displayToonGif() {
-        $(`#toons-view-one`).empty();
-        $(`#toons-view-two`).empty();
-        $(`#toons-view-three`).empty();
+        $(`#toons-view`).empty();
 
         let toon = $(this).attr(`data-name`)
         let queryURL = `https://api.giphy.com/v1/gifs/search?q=${toon}+cartoon&api_key=TqXsiW057A6TfMyJpYRpF4IynG9rHxk5&limit=10&rating=g&rating=pg&rating=pg-13`;
@@ -28,27 +26,13 @@ $(document).ready(function() {
             console.log(response.data);
             
 
-            for(let i = 0; i < 4; i++) {
+            for(let i = 0; i < response.data.length; i++) {
 
                 
-                $(`#toons-view-one`).append(`<img src=${response.data[i].images.fixed_width.url}><br>`);
-                $(`#toons-view-one`).append(`Rating: ${response.data[i].rating}<br>`);
+                $(`#toons-view`).append(`<img src=${response.data[i].images.fixed_width.url}><br>`);
+                $(`#toons-view`).append(`Rating: ${response.data[i].rating}<br>`);
 
             } 
-            for(let k = 4; k < 7; k++) {
-
-                
-                $(`#toons-view-two`).append(`<img src=${response.data[k].images.fixed_width.url}><br>`);
-                $(`#toons-view-two`).append(`Rating: ${response.data[k].rating}<br>`);
-
-            }
-            for(let l = 7; l < 10; l++) {
-
-                
-                $(`#toons-view-three`).append(`<img src=${response.data[l].images.fixed_width.url}><br>`);
-                $(`#toons-view-three`).append(`Rating: ${response.data[l].rating}<br>`);
-
-            }
         });
 
     }
@@ -62,8 +46,8 @@ $(document).ready(function() {
         //Loop through the array of toons, then generate buttons for each toon in the array
         for(let j = 0; j < cartoons.length; j++) {
             let b = $(`<button>`); 
-            b.addClass(`toon`);
-            b.css(`float`, `left`);
+            b.addClass(`toon`, `gif`);
+            //b.css(`float`, `left`);
             b.attr(`data-name`, cartoons[j]);
             b.text(cartoons[j]);
             $(`#buttons-view`).append(b);
@@ -91,7 +75,7 @@ $(document).ready(function() {
       renderButtons();
 
 
-
+      $(`.gif`).gifplayer();
 
 
 
