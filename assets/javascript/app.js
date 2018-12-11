@@ -28,14 +28,40 @@ $(document).ready(function() {
 
             for(let i = 0; i < response.data.length; i++) {
 
-                let imageBox = $(`<div>`)
-                imageBox.append(`<img src=${response.data[i].images.fixed_width.url}><br>`);
+                let imageBox = $(`<div>`).addClass(`animate-link`);
+                imageBox.append(`<img src=${response.data[i].images.fixed_width_still.url}><br>`)
+                        .attr(`data-alt`, response.data[i].images.fixed_width.url);
                 imageBox.append(`Rating: ${response.data[i].rating}<br>`).css(`text-align`, `center`);
                 $(`#toons-view`).append(imageBox);
+                console.log(imageBox);
             } 
+            //Function to retrieve animated gif stored in `data-alt` class (https://www.hongkiat.com/blog/on-click-animated-gif/)
+            let getGif = function() {
+                let gif = [];
+                $('.animate-link').each(function() {
+                  let data = $(this).data('alt');
+                  gif.push(data);
+                });
+                return gif;
+              }
+               let gif = getGif();
+               console.log(gif);
+
+            // Function to preload the animated gifs
+            let image = [];
+ 
+                $.each(gif, function(index) {
+                image[index]     = new Image();
+                image[index].src = gif[index];
+                });
         });
 
     }
+
+
+
+
+
     // Function for displaying toon data
     function renderButtons() {
 
@@ -74,7 +100,24 @@ $(document).ready(function() {
       renderButtons();
 
 
-      $(`.gif`).gifplayer();
+      // This function swaps the still gif with the animated gif when the image is clicked
+      $('#toons-view').on('click', function() {
+ 
+        let $this   = $(this),
+                $index  = $this.index(),
+                 
+                $img    = $this.children('.animate-link'),
+                $imgSrc = $img.attr('src'),
+                $imgAlt = $img.attr('data-alt'),
+                $imgExt = $imgAlt.split('_');
+                 
+        if($imgExt[1] !== 's.gif') {
+            $img.attr('src', $img.data('alt')).attr('data-alt', $imgSrc);
+        } else {
+            $img.attr('src', $imgAlt).attr('data-alt', $img.data('alt'));
+        }
+       
+      });
 
 
 
