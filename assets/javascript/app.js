@@ -28,32 +28,18 @@ $(document).ready(function() {
 
             for(let i = 0; i < response.data.length; i++) {
 
-                let imageBox = $(`<div>`).addClass(`animate-link`);
-                imageBox.append(`<img src=${response.data[i].images.fixed_width_still.url}><br>`)
-                        .attr(`data-alt`, response.data[i].images.fixed_width.url);
+                let imageBox = $(`<div>`).addClass(`imageBox`);
+                let image = $(`<img class="gif" src=${response.data[i].images.fixed_width_still.url}><br>`);
+                //imageBox.append(`<img class="gif" src=${response.data[i].images.fixed_width_still.url}><br>`)
+                    image.attr(`data-animate`, response.data[i].images.fixed_width.url)
+                            .attr(`data-still`, response.data[i].images.fixed_width_still.url)
+                            .attr(`data-state`, `still`);
+                imageBox.append(image);
                 imageBox.append(`Rating: ${response.data[i].rating}<br>`).css(`text-align`, `center`);
                 $(`#toons-view`).append(imageBox);
-                console.log(imageBox);
+                
             } 
-            //Function to retrieve animated gif stored in `data-alt` class (https://www.hongkiat.com/blog/on-click-animated-gif/)
-            let getGif = function() {
-                let gif = [];
-                $('.animate-link').each(function() {
-                  let data = $(this).data('alt');
-                  gif.push(data);
-                });
-                return gif;
-              }
-               let gif = getGif();
-               console.log(gif);
-
-            // Function to preload the animated gifs
-            let image = [];
- 
-                $.each(gif, function(index) {
-                image[index]     = new Image();
-                image[index].src = gif[index];
-                });
+            
         });
 
     }
@@ -71,8 +57,7 @@ $(document).ready(function() {
         //Loop through the array of toons, then generate buttons for each toon in the array
         for(let j = 0; j < cartoons.length; j++) {
             let b = $(`<button>`); 
-            b.addClass(`toon`, `gif`);
-            //b.css(`float`, `left`);
+            b.addClass(`toon`);
             b.attr(`data-name`, cartoons[j]);
             b.text(cartoons[j]);
             $(`#buttons-view`).append(b);
@@ -100,23 +85,21 @@ $(document).ready(function() {
       renderButtons();
 
 
-      // This function swaps the still gif with the animated gif when the image is clicked
-      $('#toons-view').on('click', function() {
- 
-        let $this   = $(this),
-                $index  = $this.index(),
-                 
-                $img    = $this.children('.animate-link'),
-                $imgSrc = $img.attr('src'),
-                $imgAlt = $img.attr('data-alt'),
-                $imgExt = $imgAlt.split('_');
-                 
-        if($imgExt[1] !== 's.gif') {
-            $img.attr('src', $img.data('alt')).attr('data-alt', $imgSrc);
-        } else {
-            $img.attr('src', $imgAlt).attr('data-alt', $img.data('alt'));
-        }
+      // Adding click event listener to gifs to start and stop animation
+      $(".gif").on("click", function() {
+        let state = (`img`).attr(`data-state`);
        
+        if(state === `still`) {
+            $(this).attr(`src`, $(this).attr(`data-animate`));
+                  
+            $(this).attr(`data-state`, `animate`);
+          } 
+          if(state === `animate`) {
+            $(this).attr(`src`, $(this).attr(`data-still`));
+                  
+            $(this).attr(`data-state`, `still`);
+          }
+        console.log(this);
       });
 
 
