@@ -3,6 +3,11 @@
     background-repeat: repeat-y;
    }
 
+.press {
+    font-family: 'Press Start 2P', cursive;
+    color: mediumpurple;
+}
+
 .flex-container {
     display: flex;
     flex-flow: row wrap;
@@ -11,9 +16,20 @@
 }
 
 .toon {
-    margin: 2px;
+    margin: 4px;
+    font-family: 'Orbitron', sans-serif;
+    background-color: mediumpurple;
+    border: 5px outset purple;
+}
+
+.toon:hover {
+    cursor: pointer;
 }
 
 .imageBox {
     margin-bottom: 5px;
+}
+
+.imageBox:hover {
+    cursor: pointer;
 }
