@@ -29,12 +29,13 @@ $(document).ready(function() {
             for(let i = 0; i < response.data.length; i++) {
 
                 let imageBox = $(`<div>`).addClass(`imageBox`);
-                let image = $(`<img class="gif" src=${response.data[i].images.fixed_width_still.url}><br>`);
+                let image = $(`<img class="gif" src=${response.data[i].images.fixed_width_still.url}>`);
                 //imageBox.append(`<img class="gif" src=${response.data[i].images.fixed_width_still.url}><br>`)
                     image.attr(`data-animate`, response.data[i].images.fixed_width.url)
                             .attr(`data-still`, response.data[i].images.fixed_width_still.url)
                             .attr(`data-state`, `still`);
-                imageBox.append(image);
+                imageBox.append(image)
+                        .append(`<br>`);
                 imageBox.append(`Rating: ${response.data[i].rating}<br>`).css(`text-align`, `center`);
                 $(`#toons-view`).append(imageBox);
                 
@@ -86,8 +87,8 @@ $(document).ready(function() {
 
 
       // Adding click event listener to gifs to start and stop animation
-      $(".gif").on("click", function() {
-        let state = (`img`).attr(`data-state`);
+      $("#toons-view").on("click", ".gif", function() {
+        let state = $(this).attr(`data-state`);
        
         if(state === `still`) {
             $(this).attr(`src`, $(this).attr(`data-animate`));
