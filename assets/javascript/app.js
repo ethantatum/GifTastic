@@ -30,10 +30,9 @@ $(document).ready(function() {
 
                 let imageBox = $(`<div>`).addClass(`imageBox`);
                 let image = $(`<img class="gif" src=${response.data[i].images.fixed_width_still.url}>`);
-                //imageBox.append(`<img class="gif" src=${response.data[i].images.fixed_width_still.url}><br>`)
                     image.attr(`data-animate`, response.data[i].images.fixed_width.url)
-                            .attr(`data-still`, response.data[i].images.fixed_width_still.url)
-                            .attr(`data-state`, `still`);
+                         .attr(`data-still`, response.data[i].images.fixed_width_still.url)
+                         .attr(`data-state`, `still`);
                 imageBox.append(image)
                         .append(`<br>`);
                 imageBox.append(`Rating: ${response.data[i].rating}<br>`).css(`text-align`, `center`);
@@ -54,6 +53,7 @@ $(document).ready(function() {
 
         // Delete the content inside the toons-view div prior to adding new toons
         $(`#buttons-view`).empty();
+        $(`input`).text(``);
 
         //Loop through the array of toons, then generate buttons for each toon in the array
         for(let j = 0; j < cartoons.length; j++) {
@@ -74,9 +74,12 @@ $(document).ready(function() {
 
         // The toon from the textbox is then added to our array
         cartoons.push(toon);
+        // Then the input box is cleared of user text
+        $(`#toon-input`).val(``);
 
         // Calling renderButtons which handles the processing of our cartoons array
         renderButtons();
+       
       });
 
       // Adding click event listeners to all elements with a class of "toon"

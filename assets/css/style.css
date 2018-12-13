@@ -9,3 +9,11 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.toon {
+    margin: 2px;
+}
+
+.imageBox {
+    margin-bottom: 5px;
+}
