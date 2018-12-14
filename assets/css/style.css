@@ -3,6 +3,12 @@
     background-repeat: repeat-y;
    }
 
+#add-toon {
+    font-family: 'Orbitron', sans-serif;
+    background-color: mediumpurple;
+    border: 5px outset purple;
+}
+
 .press {
     font-family: 'Press Start 2P', cursive;
     color: mediumpurple;

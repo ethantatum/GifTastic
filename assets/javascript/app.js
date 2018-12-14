@@ -3,7 +3,7 @@ $(document).ready(function() {
     // ============================================================================
 
     // Initial array of cartoons
-    let cartoons = [`ThunderCats`, `He-Man`, `Transformers`, `She-Ra`, `DuckTales`, `Inspector Gadget`];
+    let cartoons = [`ThunderCats`, `Rainbow Brite`, `He-Man`, `Care Bears`, `Transformers`, `She-Ra`, `DuckTales`, `Inspector Gadget`];
      
 
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
         $(`#toons-view`).empty();
 
         let toon = $(this).attr(`data-name`)
-        let queryURL = `https://api.giphy.com/v1/gifs/search?q=${toon}+cartoon&api_key=TqXsiW057A6TfMyJpYRpF4IynG9rHxk5&limit=10&rating=g&rating=pg&rating=pg-13`;
+        let queryURL = `https://api.giphy.com/v1/gifs/search?q=${toon}+80s+cartoon&api_key=TqXsiW057A6TfMyJpYRpF4IynG9rHxk5&limit=10&rating=g&rating=pg&rating=pg-13`;
 
         // Creates AJAX call for the specific toon button being clicked
         $.ajax({
