@@ -9,6 +9,11 @@
     border: 5px outset purple;
 }
 
+#add-toon:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
 .press {
     font-family: 'Press Start 2P', cursive;
     color: mediumpurple;
@@ -30,6 +35,7 @@
 
 .toon:hover {
     cursor: pointer;
+    opacity: 0.85;;
 }
 
 .imageBox {
@@ -38,4 +44,6 @@
 
 .imageBox:hover {
     cursor: pointer;
+    outline: 3px outset mediumpurple;
+    outline-offset: 2px;
 }
