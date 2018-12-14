@@ -1,37 +1,15 @@
 # GifTastic
 
-##Instructions
+## One Fine 80s Morning
+### 80s Cartoon Gif Search
 
-### Before you can make any part of our site work, you need to create an array of strings, each one related to a topic that interests you. Save it to a variable called topics.
+#### Click any of the existing buttons at the top of the page to load 10 gifs to the page.
+#### The gifs will load as still images - click on each one to see the animation, and hit again to stop
+#### Each gif shows its rating underneath - for the purposes of this page, R rated gifs are not included.
 
-### We chose animals for our theme, but you can make a list to your own liking.
+#### Add your own buttons to the page by filling in the text box on the right of the page, and either clicking the Add button or pressing Enter.
+#### After adding your button, click it view the gifs related to your cartoon!
 
-### Your app should take the topics in this array and create buttons in your HTML.
+#### All gifs are provided by the Giphy API.
 
-### Try using a loop that appends a button for each string in the array.
-
-### When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
-### When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
-### Under every gif, display its rating (PG, G, so on).
-
-### This data is provided by the GIPHY API.
-### Only once you get images displaying with button presses should you move on to the next step.
-
-### Add a form to your page takes the value from a user input box and adds it into your topics array. Then make a function call that takes each topic in the array remakes the buttons on the page.
-
-## Bonus Goals
-
-### Ensure your app is fully mobile responsive.
-
-### Allow users to request additional gifs to be added to the page.
-
-### Each request should ADD 10 gifs to the page, NOT overwrite the existing gifs.
-
-### List additional metadata (title, tags, etc) for each gif in a clean and readable format.
-### Include a 1-click download button for each gif, this should work across device types.
-### Integrate this search with additional APIs such as OMDB, or Bands in Town. Be creative and build something you are proud to showcase in your portfolio
-
-### Allow users to add their favorite gifs to a favorites section.
-
-### This should persist even when they select or add a new topic.
-### If you are looking for a major challenge, look into making this section persist even when the page is reloaded(via localStorage or cookies).
+### Thanks, and enjoy the gifs!
