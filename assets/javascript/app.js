@@ -5,8 +5,6 @@ $(document).ready(function() {
     // Initial array of cartoons
     let cartoons = [`ThunderCats`, `Rainbow Brite`, `He-Man`, `Care Bears`, `Transformers`, `She-Ra`, `DuckTales`, `Inspector Gadget`];
      
-
-
     // FUNCTIONS
     // ============================================================================
 
@@ -24,7 +22,6 @@ $(document).ready(function() {
         }).then(function(response) {
             console.log(response);
             console.log(response.data);
-            
 
             for(let i = 0; i < response.data.length; i++) {
 
@@ -43,10 +40,6 @@ $(document).ready(function() {
         });
 
     }
-
-
-
-
 
     // Function for displaying toon data
     function renderButtons() {
@@ -88,7 +81,6 @@ $(document).ready(function() {
       // Calling the renderButtons function to display the initial list of cartoons
       renderButtons();
 
-
       // Adding click event listener to gifs to start and stop animation
       $("#toons-view").on("click", ".gif", function() {
         let state = $(this).attr(`data-state`);
@@ -105,9 +97,5 @@ $(document).ready(function() {
           }
         console.log(this);
       });
-
-
-
-
 
 });
