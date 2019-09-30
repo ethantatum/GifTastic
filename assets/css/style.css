@@ -1,6 +1,7 @@
 .background-image {
     background-image: url('../images/80s-floor.png');
     background-repeat: repeat-y;
+    background-position: cover;
    }
 
 #add-toon {
